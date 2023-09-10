@@ -32,7 +32,7 @@ class Auth {
       String email, String password, String urlSegment) async {
     try {
       final url = Uri.parse(
-          'https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=AIzaSyBPboZhjY3w3Txp0gO2NeWaXJGOd1zKoHo');
+          'https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=KEY');
       final response = await http.post(
         url,
         body: json.encode(
