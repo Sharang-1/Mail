@@ -32,7 +32,6 @@ dependencies:
   flutter:
     sdk: flutter
   intl: ^0.18.1
-  provider: ^6.0.5
   flutter_native_splash: ^2.2.4
   http: ^0.13.5
   shared_preferences: ^2.2.0
@@ -76,6 +75,7 @@ flutter:
     - assets/image/login.png
     - assets/image/profile.png
     - assets/image/Profile Image.png
+    - assets/image/empty.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

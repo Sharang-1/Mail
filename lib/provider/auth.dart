@@ -2,11 +2,10 @@ import 'dart:convert';
 import 'dart:async';
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Auth with ChangeNotifier {
+class Auth {
   late String? _token;
   late DateTime? _expiryDate;
   late String? _userId;
@@ -53,7 +52,6 @@ class Auth with ChangeNotifier {
       _expiryDate = DateTime.now()
           .add(Duration(seconds: int.parse(responseData['expiresIn'])));
 
-      notifyListeners();
       final prefs = await SharedPreferences.getInstance();
       final userData = json.encode({
         'token': _token,
@@ -82,7 +80,6 @@ class Auth with ChangeNotifier {
       _authTimer!.cancel();
       _authTimer = null;
     }
-    notifyListeners();
     final prefs = await SharedPreferences.getInstance();
     prefs.clear();
     // prefs.remove('userData');

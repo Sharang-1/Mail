@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:mail/Components/ProfileTileUI.dart';
-import 'package:mail/provider/mails.dart';
 
-import '../Components/MailTile.dart';
+import '/Components/profileTileUI.dart';
+import '/provider/mail.dart';
+import '../Components/mailTile.dart';
 
 class HomeScreen extends StatelessWidget {
+  List<Mail> mails;
+  Function search;
+  HomeScreen(this.mails, this.search);
   static const routeName = '/home-screen';
 
   @override
@@ -21,7 +24,7 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: TextField(
               onChanged: (value) {
-                print(value);
+                search(value);
               },
               decoration: InputDecoration(
                 isDense: true,
@@ -55,11 +58,15 @@ class HomeScreen extends StatelessWidget {
           ),
           SizedBox(
             height: 700,
-            child: ListView.builder(
-              padding: const EdgeInsets.only(top: 20),
-              itemBuilder: ((context, i) => MailTileUI(mail: Mails.mails[i])),
-              itemCount: Mails.mails.length,
-            ),
+            child: mails.isEmpty
+                ? Image.asset("assets/image/empty.png")
+                : ListView.builder(
+                    padding: const EdgeInsets.only(top: 20),
+                    itemBuilder: ((context, i) => MailTileUI(
+                          mail: mails[i],
+                        )),
+                    itemCount: mails.length,
+                  ),
           ),
         ],
       ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mail/Screen/homeScreen.dart';
-import 'package:provider/provider.dart';
 
 import '../models/http_exception.dart';
 import '../provider/auth.dart';
@@ -20,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   };
   bool _isSignUp = false;
   bool _isLoading = false;
+  Auth verify = new Auth();
 
   void _showErrorDialog(String message) {
     showDialog(
@@ -49,13 +49,13 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       if (_isSignUp) {
         // Sign user up
-        await Provider.of<Auth>(context, listen: false).signup(
+        await verify.signup(
           _authData['email']!,
           _authData['password']!,
         );
       } else {
         // Log user in
-        await Provider.of<Auth>(context, listen: false).login(
+        await verify.login(
           _authData['email']!,
           _authData['password']!,
         );

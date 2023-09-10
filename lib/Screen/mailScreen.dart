@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:intl/intl.dart';
-import 'package:mail/provider/mails.dart';
 
 import '../provider/mail.dart';
 
 class MailScreen extends StatelessWidget {
+  static const routeName = '/mail-screen';
   Mail mail;
   MailScreen({super.key, required this.mail});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

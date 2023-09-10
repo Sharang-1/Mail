@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'dart:math' as math;
 import 'package:intl/intl.dart';
 import 'package:mail/Screen/mailScreen.dart';
@@ -7,7 +8,7 @@ import '../provider/mail.dart';
 
 class MailTileUI extends StatefulWidget {
   final Mail mail;
-  const MailTileUI({super.key, required this.mail});
+  MailTileUI({super.key, required this.mail});
 
   @override
   State<MailTileUI> createState() => _MailTileUIState();
@@ -59,7 +60,9 @@ class _MailTileUIState extends State<MailTileUI> {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => MailScreen(mail: widget.mail),
+                      builder: (context) => MailScreen(
+                        mail: widget.mail,
+                      ),
                     ),
                   );
                 },
